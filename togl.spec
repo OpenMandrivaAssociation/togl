@@ -1,11 +1,15 @@
+# required by netgen
+%define	compat_17	1
+
 Name:		togl
 Group:		Sciences/Other
 Version:	2.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 Summary:	Togl - a Tk OpenGL widget
 License:	BSD like
 URL:		http://togl.sourceforge.net/index.html
 Source0:	Togl2.0-src.tar.gz
+Source1:	Togl-1.7.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:	GL-devel
@@ -42,7 +46,7 @@ Benjamin Bederson (bedersonATcsDOTumdDOTedu), and Greg Couch
 
 #-----------------------------------------------------------------------
 %prep
-%setup -q -n Togl%{version}
+%setup -q -n Togl%{version} -a 1
 
 %patch0 -p1
 
@@ -50,6 +54,12 @@ Benjamin Bederson (bedersonATcsDOTumdDOTedu), and Greg Couch
 %build
 %configure --disable-static --enable-shared
 %make
+%if %{compat_17}
+  pushd Togl-1.7
+    %configure --disable-static --enable-shared
+    %make
+  popd
+%endif
 
 #-----------------------------------------------------------------------
 %clean
@@ -57,18 +67,36 @@ rm -rf %{buildroot}
 
 #-----------------------------------------------------------------------
 %install
+%if %{compat_17}
+  pushd Togl-1.7
+    %makeinstall_std
+    mkdir -p %{buildroot}%{_includedir}/Togl1.7
+    rm -f %{buildroot}%{_includedir}/togl_ws.h
+    mv -f %{buildroot}%{_includedir}/togl.h %{buildroot}%{_includedir}/Togl1.7
+    mv -f %{buildroot}%{_libdir}/Togl1.7/* %{buildroot}%{_libdir}
+    mv -f %{buildroot}%{_libdir}/{,Togl1.7-}pkgIndex.tcl
+    rmdir %{buildroot}%{_libdir}/Togl1.7
+  popd
+%endif
 %makeinstall_std
 mkdir -p %{buildroot}%{_docdir}/togl
 mv -f %{buildroot}%{_libdir}/Togl2.0/LICENSE %{buildroot}%{_docdir}/togl
 cp -fa doc/* %{buildroot}%{_docdir}/togl
 mv -f %{buildroot}%{_libdir}/Togl2.0/* %{buildroot}%{_libdir}
+mv -f %{buildroot}%{_libdir}/{,Togl2.0-}pkgIndex.tcl
+rmdir %{buildroot}%{_libdir}/Togl2.0
 
 #-----------------------------------------------------------------------
 %files
 %defattr(-,root,root)
-%{_libdir}/lib*.so
+%{_libdir}/libTogl2.0.so
 %{_libdir}/lib*.a
 %{_libdir}/*.tcl
 %{_includedir}/*.h
 %dir %{_docdir}/togl
 %{_docdir}/togl/*
+%if %{compat_17}
+  %{_libdir}/libTogl1.7.so
+  %dir %{_includedir}/Togl1.7
+  %{_includedir}/Togl1.7/*.h
+%endif
