@@ -15,9 +15,8 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	GL-devel
 BuildRequires:	tcl-devel
 BuildRequires:	tk-devel
-BuildRequires:	X11-devel
-%py_requires -d
-
+BuildRequires:	libx11-devel
+BuildRequires:	libxmu-devel
 Patch0:		Togl2.0-build.patch
 
 %description
@@ -52,11 +51,11 @@ Benjamin Bederson (bedersonATcsDOTumdDOTedu), and Greg Couch
 
 #-----------------------------------------------------------------------
 %build
-%configure --disable-static --enable-shared
+%configure2_5x --disable-static --enable-shared
 %make
 %if %{compat_17}
   pushd Togl-1.7
-    %configure --disable-static --enable-shared
+    %configure2_5x --disable-static --enable-shared
     %make
   popd
 %endif
