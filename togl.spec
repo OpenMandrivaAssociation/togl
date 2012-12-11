@@ -99,3 +99,19 @@ rmdir %{buildroot}%{_libdir}/Togl2.0
   %dir %{_includedir}/Togl1.7
   %{_includedir}/Togl1.7/*.h
 %endif
+
+
+%changelog
+* Sat Nov 06 2010 Funda Wang <fwang@mandriva.org> 2.0-2mdv2011.0
++ Revision: 594031
+- fix build
+
+* Thu Feb 25 2010 Paulo Andrade <pcpa@mandriva.com.br> 2.0-2mdv2010.1
++ Revision: 511369
+- Add Togl1.7 compat and non conflicting build
+
+* Wed Feb 24 2010 Paulo Andrade <pcpa@mandriva.com.br> 2.0-1mdv2010.1
++ Revision: 510775
+- Import togl
+- togl
+
