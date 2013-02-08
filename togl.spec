@@ -4,13 +4,12 @@
 Name:		togl
 Group:		Sciences/Other
 Version:	2.0
-Release:	%mkrel 2
+Release:	3
 Summary:	Togl - a Tk OpenGL widget
 License:	BSD like
 URL:		http://togl.sourceforge.net/index.html
 Source0:	Togl2.0-src.tar.gz
 Source1:	Togl-1.7.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 BuildRequires:	GL-devel
 BuildRequires:	tcl-devel
@@ -24,7 +23,7 @@ Togl is a Tk widget for OpenGL rendering. Togl was originally based on OGLTK,
 written by Benjamin Bederson at the University of New Mexico. Togl's main
 features are:
 
-    * unifies Microsoft Windows, X11 (Linux/IRIX/...), and Mac OS X Aqua support
+    * unifies MS Windows, X11 (Linux/IRIX/...), and Mac OS X Aqua support
     * support for requesting stencil, accumulation, alpha buffers, etc.
     * multiple OpenGL drawing windows
     * simple stereo rendering support
