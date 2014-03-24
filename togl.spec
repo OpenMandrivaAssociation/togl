@@ -11,11 +11,11 @@ URL:		http://togl.sourceforge.net/index.html
 Source0:	Togl2.0-src.tar.gz
 Source1:	Togl-1.7.tar.gz
 
-BuildRequires:	GL-devel
+BuildRequires:	pkgconfig(gl)
 BuildRequires:	tcl-devel
 BuildRequires:	tk-devel
-BuildRequires:	libx11-devel
-BuildRequires:	libxmu-devel
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xmu)
 Patch0:		Togl2.0-build.patch
 
 %description
@@ -86,7 +86,6 @@ rmdir %{buildroot}%{_libdir}/Togl2.0
 
 #-----------------------------------------------------------------------
 %files
-%defattr(-,root,root)
 %{_libdir}/libTogl2.0.so
 %{_libdir}/lib*.a
 %{_libdir}/*.tcl
@@ -98,19 +97,3 @@ rmdir %{buildroot}%{_libdir}/Togl2.0
   %dir %{_includedir}/Togl1.7
   %{_includedir}/Togl1.7/*.h
 %endif
-
-
-%changelog
-* Sat Nov 06 2010 Funda Wang <fwang@mandriva.org> 2.0-2mdv2011.0
-+ Revision: 594031
-- fix build
-
-* Thu Feb 25 2010 Paulo Andrade <pcpa@mandriva.com.br> 2.0-2mdv2010.1
-+ Revision: 511369
-- Add Togl1.7 compat and non conflicting build
-
-* Wed Feb 24 2010 Paulo Andrade <pcpa@mandriva.com.br> 2.0-1mdv2010.1
-+ Revision: 510775
-- Import togl
-- togl
-
