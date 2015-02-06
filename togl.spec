@@ -4,7 +4,7 @@
 Name:		togl
 Group:		Sciences/Other
 Version:	2.0
-Release:	3
+Release:	4
 Summary:	Togl - a Tk OpenGL widget
 License:	BSD like
 URL:		http://togl.sourceforge.net/index.html
