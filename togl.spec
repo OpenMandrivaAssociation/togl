@@ -7,7 +7,7 @@ Version:	2.0
 Release:	5
 Summary:	Togl - a Tk OpenGL widget
 License:	BSD like
-URL:		http://togl.sourceforge.net/index.html
+URL:		https://togl.sourceforge.net/index.html
 Source0:	https://prdownloads.sourceforge.net/togl/Togl/%{version}/Togl%{version}-src.tar.gz
 Source1:	https://prdownloads.sourceforge.net/togl/Togl/1.7/Togl-1.7.tar.gz
 
