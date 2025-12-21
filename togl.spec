@@ -11,6 +11,11 @@ URL:		https://togl.sourceforge.net/index.html
 Source0:	https://prdownloads.sourceforge.net/togl/Togl/%{version}/Togl%{version}-src.tar.gz
 Source1:	https://prdownloads.sourceforge.net/togl/Togl/1.7/Togl-1.7.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	tcl-devel
 BuildRequires:	tk-devel
